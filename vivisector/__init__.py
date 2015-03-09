@@ -50,7 +50,9 @@ def vivisect(anatomy, report_writer):
                                                           design_data.get("scenario"),
                                                           attribute,
                                                           design_data.get("variant"))
-                print "\t", name_of_set(target, version), "\t", os.path.basename(shot)
+
+                if shot:
+                    print "\t", name_of_set(target, version), "\t", os.path.basename(shot)
 
                 shot_set.append((design_image, setname, shot))
 
