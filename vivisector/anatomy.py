@@ -107,8 +107,12 @@ class FilesystemAnatomy(Anatomy):
         for (dirpath, dirnames, filenames) in os.walk(directory):
             return (dirpath, dirnames, filenames) #intentionaly return after top-level dir walk
 
+
     # compare filenames in the form "1.4.2 something something.png"
-    def versioned_compare(self, caption1, caption2):
+    def versioned_compare(self, filename1, filename2):
+        caption1 = os.path.basename(filename1)
+        caption2 = os.path.basename(filename2)
+
         ok = re.compile("[0-9.]+[^0-9.]+")
         if None is ok.match(caption1) or None is ok.match(caption2):
             text1 = caption1

@@ -30,7 +30,7 @@ def vivisect(anatomy, report_writer):
     for attribute in anatomy.all_target_attributes():
         report_name = attribute + "-screenshots"
         report_matched_sets = []
-        valid_design_files = [d for d in design_bank.files() if design_bank.image_valid_for_attribute(d, attribute)]
+        valid_design_files = [d for d in anatomy.design_file_list() if design_bank.image_valid_for_attribute(d, attribute)]
 
         # create a row for each design image followed by matching screenshots
         for design_image in valid_design_files:
