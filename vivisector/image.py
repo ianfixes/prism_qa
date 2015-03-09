@@ -102,6 +102,8 @@ class DesignBank(ImageBank):
     def image_valid_for_attribute(self, filename, attribute):
         # valid if a more specific image does not exist
 
+        if filename not in self.image_data: return False
+
         data = self.image_data[filename]
 
 
