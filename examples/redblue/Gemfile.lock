@@ -1,0 +1,18 @@
+PATH
+  remote: ../
+  specs:
+    vivisector (0.1.0)
+      markaby (>= 0.8.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    builder (3.2.2)
+    markaby (0.8.0)
+      builder
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  vivisector!
