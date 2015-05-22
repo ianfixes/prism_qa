@@ -23,7 +23,6 @@ module Vivisector
       unless @web_document_root.nil?
         # return the path minus the web_document_root prefix of it
       end
-      puts "path_transform #{path}"
       path
     end
 
