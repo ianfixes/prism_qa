@@ -14,4 +14,6 @@ module Vivisector
     attr_accessor :attribute
   end
 
+  # App images are the same as images, but create this alias for symmetry / clarity
+  class AppImage < Image; end
 end
