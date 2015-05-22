@@ -1,5 +1,5 @@
 PATH
-  remote: ../
+  remote: ../../
   specs:
     vivisector (0.1.0)
       markaby (>= 0.8.0)
