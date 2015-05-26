@@ -1,4 +1,5 @@
 require 'bundler/setup'
+require 'fileutils'
 require 'vivisector'
 
 # Minimal anatomy example: we hard-code 3 images we know are in the filesystem
@@ -80,11 +81,14 @@ def title_for_attribute attribute
 end
 
 # Create the function we will use to determine the report filenames
+$output_dir = File.join(File.dirname(__FILE__), "output")
 def html_report_path_for_attribute attribute
   attribute = "default" if attribute.nil?
-  File.join(File.dirname(__FILE__), "output", "#{attribute}.html")
+  File.join($output_dir, "#{attribute}.html")
 end
 
+# create the output directory if it doesn't exist
+FileUtils.mkdir_p $output_dir
 
 # Kick off the reporting; the images will be fetched at this point.
 Vivisector::report(my_anatomy,
