@@ -8,13 +8,16 @@ module Vivisector
     attr_accessor :anatomy
     attr_accessor :appographies
     attr_accessor :web_document_root
+    attr_accessor :img_width_px
 
     def css
+      width_string = ""
+      width_string = "width: #{@img_width_px}px;" unless img_width_px.nil?
       %(
         body {color:white; background-color:#333;}
         table.comparison th {border-top: 1px solid #ccc;}
         table.comparison td {padding-bottom:1ex; text-align:center;}
-        .masterimg {background-color:white;}
+        .masterimg, .appimg {background-color:white; #{width_string}}
         .missing {white-space: pre; text-align:center;}
        )
     end
@@ -81,12 +84,12 @@ module Vivisector
                   end
 
                   candidates.each do |candidate|
-                    impl_image = candidate.image_set.best_image_for(design_image.id)
-                    if impl_image.nil?
+                    app_image = candidate.image_set.best_image_for(design_image.id)
+                    if app_image.nil?
                       td { div.missing "#{design_image.description} on #{candidate.image_set.target.name}" }
                     else
                       td :align => "left", :valign => "top" do
-                        div.holder { img.masterimg :src => me.path_transform(impl_image.path), :alt => impl_image.description }
+                        div.holder { img.appimg :src => me.path_transform(app_image.path), :alt => app_image.description }
                       end
                     end
                   end

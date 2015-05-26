@@ -10,7 +10,7 @@ require 'vivisector/reportset'
 
 module Vivisector
 
-  def self.report(anatomy, appographies, title_for_attribute_fn, path_for_attribute_fn, web_document_root)
+  def self.report(anatomy, appographies, title_for_attribute_fn, path_for_attribute_fn, web_document_root, img_width_px)
     # load source images
     anatomy.load
     appographies.each { |appog| appog.load }
@@ -31,6 +31,7 @@ module Vivisector
     rs.title_for_attribute_fn = title_for_attribute_fn
     rs.path_for_attribute_fn  = path_for_attribute_fn
     rs.web_document_root      = web_document_root
+    rs.img_width_px           = img_width_px
 
     rs.write
   end
