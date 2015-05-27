@@ -1,4 +1,5 @@
 require 'markaby'
+require_relative 'filesystem'
 
 module Vivisector
 
@@ -8,6 +9,7 @@ module Vivisector
     attr_accessor :anatomy
     attr_accessor :appographies
     attr_accessor :web_document_root
+    attr_accessor :destination_path
     attr_accessor :img_width_px
 
     def css
@@ -22,11 +24,12 @@ module Vivisector
        )
     end
 
-    def path_transform path
+    # if necessary, modify the path to be relative (for web-based reports)
+    def path_transform element_path
       unless @web_document_root.nil?
-        # return the path minus the web_document_root prefix of it
+        element_path = web_relative_path(@web_document_root, @destination_path, element_path)
       end
-      path
+      element_path
     end
 
     def to_s

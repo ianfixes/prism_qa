@@ -95,5 +95,5 @@ Vivisector::report(my_anatomy,
                    [my_appography_short, my_appography_tall],
                    method(:title_for_attribute),
                    method(:html_report_path_for_attribute),
-                   nil,
+                   File.dirname(__FILE__),    # pretend that this is the root of a web directory -- use relative paths
                    320)
