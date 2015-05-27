@@ -33,11 +33,11 @@ module Vivisector
 
     def allow image
       # Ensure that image objects have an "attribute" field, among other things
-      raise RuntimeError, "Tried to add a non- DesignImage object to a DesignImageSet" unless image.is_a? DesignImage
+      raise IncompatibilityError, "Tried to add a non- DesignImage object to a DesignImageSet" unless image.is_a? DesignImage
 
       # no duplicates allowed
       if (@images.map { |i| [i.id, i.attribute] }).include? [image.id, image.attribute]
-        raise RuntimeError, "Tried to add an image with duplicate ID and attribute"
+        raise OperationalError, "Tried to add an image with duplicate ID and attribute"
       end
     end
 
@@ -90,11 +90,11 @@ module Vivisector
     def allow image
       # no duplicates
       if (@images.map { |i| i.id}).include? image.id
-        raise RuntimeError, "Tried to add an image with duplicate ID"
+        raise OperationalError, "Tried to add an image with duplicate ID"
       end
 
       # App image sets don't need to worry about specific fields, but we keep it clean and symmetric.
-      raise RuntimeError, "Tried to add a DesignImage object to a non- DesignImageSet" if image.is_a? DesignImage
+      raise IncompatibilityError, "Tried to add a DesignImage object to a non- DesignImageSet" if image.is_a? DesignImage
     end
 
     def cache_image_lookups

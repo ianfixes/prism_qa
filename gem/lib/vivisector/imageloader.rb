@@ -37,10 +37,10 @@ module Vivisector
     end
 
     def allow_image_set image_set
-      raise RuntimeError, "Got a nil DesignImageSet object; was #{self.class.name} properly extended?" if image_set.nil?
+      raise ImplementationError, "Got a nil DesignImageSet object; was #{self.class.name} properly extended?" if image_set.nil?
 
       # Ensure that we are only looking at design images
-      raise RuntimeError, "Tried to add a non- DesignImageSet object to Anatomy" unless image_set.is_a? DesignImageSet
+      raise IncompatibilityError, "Tried to add a non- DesignImageSet object to Anatomy" unless image_set.is_a? DesignImageSet
     end
 
   end
@@ -49,10 +49,10 @@ module Vivisector
   class Appography < ImageLoader
 
     def allow_image_set image_set
-      raise RuntimeError, "Got a nil DesignImageSet object; was #{self.class.name} properly extended?" if image_set.nil?
+      raise ImplementationError, "Got a nil DesignImageSet object; was #{self.class.name} properly extended?" if image_set.nil?
 
       # Ensure that we are only looking at implementation images
-      raise RuntimeError, "Tried to add a DesignImageSet object to Appography" if image_set.is_a? DesignImageSet
+      raise IncompatibiltyError, "Tried to add a DesignImageSet object to Appography" if image_set.is_a? DesignImageSet
     end
 
   end

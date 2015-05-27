@@ -1,5 +1,6 @@
 require 'vivisector/version'
 
+require 'vivisector/exceptions'
 require 'vivisector/target'
 require 'vivisector/image'
 require 'vivisector/imageset'
