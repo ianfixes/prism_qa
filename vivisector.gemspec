@@ -5,6 +5,7 @@ require 'vivisector/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "vivisector"
+  spec.description   = "Vivisector helps you see inside your apps, specifically so that designers can be part of a QA / Continuous Integration process. It's a framework to help you compare design 'master' images to actual screenshots from various implementations."
   spec.version       = Vivisector::VERSION
   spec.licenses      = ['Apache 2.0']
   spec.authors       = ["Ian Katz"]
@@ -22,8 +23,8 @@ Gem::Specification.new do |spec|
     # spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
   end
 
-  spec.add_development_dependency "bundler", ">= 1.3.6"
+  spec.add_development_dependency "bundler", '~> 1.3', '>= 1.3.6'
   spec.add_development_dependency "rake", "~> 10.0"
 
-  spec.add_runtime_dependency "markaby", ">= 0.8.0"
+  spec.add_runtime_dependency "markaby", '~> 0.8', ">= 0.8.0"
 end
