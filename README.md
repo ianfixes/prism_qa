@@ -12,11 +12,6 @@ Vivisector helps you see inside your apps, specifically so that designers can be
 * If designers are pointing out problems in the design of a released build (nightly or otherwise), they are too late -- perpetually.  They need to be involved during the pull request phase, doing the design equivalent of a code review.
 
 
-## Vivisector Requirements
-
-You supply the input images.  You supply the output images.  You specify how they are related.  Vivisector really doesn't do much there; it simply generates reports.  See the [example implementations](examples/) for information on how to set these up.
-
-
 ## Installation
 
 The most straightforward way is to install the gem.
@@ -25,4 +20,16 @@ The most straightforward way is to install the gem.
 
 Bundler is the preferred method.
 
-`gem 'vivisector', :git => 'https://github.com/ifreecarve/vivisector.git'`
+`gem 'vivisector', '~> 0.1', '>= 0.1.1'`
+
+
+## Vivisector Requirements
+
+You supply the input images.  You supply the output images.  You specify how they are related by defining a set of IDs and tagging the images with the appopriate ID.
+
+Vivisector really doesn't do much; it simply generates reports.
+
+
+## Setup
+
+See the [example implementations](examples/) for information on how to set up a basic Vivisector script.
