@@ -20,7 +20,7 @@ module Vivisector
         table.comparison th {border-top: 1px solid #ccc;}
         table.comparison td {padding-bottom:1ex; text-align:center;}
         .masterimg, .appimg {background-color:white; #{width_string}}
-        .missing {white-space: pre; text-align:center;}
+        .missing {text-align:center; #{width_string}}
        )
     end
 
