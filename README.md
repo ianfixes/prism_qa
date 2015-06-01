@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/vivisector.svg)](https://rubygems.org/gems/vivisector)
+
 # Vivisector
 
 Vivisector helps you see inside your apps, specifically so that designers can be part of a QA / Continuous Integration process.  It's a framework to help you compare design "master" images to actual screenshots from various implementations.
