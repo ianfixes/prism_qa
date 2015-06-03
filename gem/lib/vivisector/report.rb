@@ -20,6 +20,7 @@ module Vivisector
         table.comparison th {border-top: 1px solid #ccc;}
         table.comparison td {padding-bottom:1ex; text-align:center;}
         .masterimg, .appimg {background-color:white; #{width_string}}
+        .img {border:0;}
         .missing {text-align:center; #{width_string}}
        )
     end
@@ -83,7 +84,10 @@ module Vivisector
                 # images
                 tr do
                   td :align => "right", :valign => "top" do
-                    img.masterimg :src => me.path_transform(design_image.path), :alt => design_image.description
+                    src = me.path_transform(design_image.path)
+                    a :href => src do
+                      img.masterimg :src => src, :alt => design_image.description
+                    end
                   end
 
                   candidates.each do |candidate|
@@ -92,7 +96,12 @@ module Vivisector
                       td { div.missing "#{design_image.description} on #{candidate.image_set.target.name}" }
                     else
                       td :align => "left", :valign => "top" do
-                        div.holder { img.appimg :src => me.path_transform(app_image.path), :alt => app_image.description }
+                        div.holder do
+                          src = me.path_transform(app_image.path)
+                          a :href => src do
+                            img.appimg :src => src, :alt => app_image.description
+                          end
+                        end
                       end
                     end
                   end
