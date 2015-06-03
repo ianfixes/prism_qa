@@ -37,7 +37,7 @@ module Vivisector
 
       # no duplicates allowed
       if (@images.map { |i| [i.id, i.attribute] }).include? [image.id, image.attribute]
-        raise OperationalError, "Tried to add an image with duplicate ID and attribute"
+        raise OperationalError, "Tried to add an image with duplicate ID '#{image.id}' and attribute '#{image.attribute}'"
       end
     end
 
@@ -90,7 +90,7 @@ module Vivisector
     def allow image
       # no duplicates
       if (@images.map { |i| i.id}).include? image.id
-        raise OperationalError, "Tried to add an image with duplicate ID"
+        raise OperationalError, "Tried to add an image with duplicate ID '#{image.id}'"
       end
 
       # App image sets don't need to worry about specific fields, but we keep it clean and symmetric.
