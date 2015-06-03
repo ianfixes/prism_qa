@@ -1,8 +1,8 @@
 PATH
-  remote: .
+  remote: ../../
   specs:
-    vivisector (0.1.0)
-      markaby (>= 0.8.0)
+    vivisector (0.1.2)
+      markaby (~> 0.8, >= 0.8.0)
 
 GEM
   remote: https://rubygems.org/
@@ -10,12 +10,9 @@ GEM
     builder (3.2.2)
     markaby (0.8.0)
       builder
-    rake (10.4.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (>= 1.3.6)
-  rake (~> 10.0)
   vivisector!
