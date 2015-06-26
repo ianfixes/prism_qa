@@ -1,10 +1,10 @@
 require_relative 'filesystem'
 
-module Vivisector
+module PrismQA
 
   class ReportSet
-    attr_accessor :anatomy
-    attr_accessor :appographies
+    attr_accessor :design_spectrum
+    attr_accessor :app_spectra
     attr_accessor :title_for_attribute_fn
     attr_accessor :path_for_attribute_fn
     attr_accessor :web_document_root
@@ -20,7 +20,7 @@ module Vivisector
     end
 
     def write
-      @anatomy.image_set.contained_attributes.map do |attr|
+      @design_spectrum.image_set.contained_attributes.map do |attr|
 
         # first check whether the destination is ok
         path = @path_for_attribute_fn.call(attr)
@@ -29,8 +29,8 @@ module Vivisector
         r = Report.new
         r.title             = @title_for_attribute_fn.call(attr)
         r.attribute         = attr
-        r.anatomy           = @anatomy
-        r.appographies      = @appographies
+        r.design_spectrum   = @design_spectrum
+        r.app_spectra       = @app_spectra
         r.web_document_root = @web_document_root
         r.destination_path  = path
         r.img_width_px      = @img_width_px
@@ -42,4 +42,4 @@ module Vivisector
   end
 
 
-end #Vivisector
+end

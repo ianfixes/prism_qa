@@ -1,13 +1,13 @@
 require 'markaby'
 require_relative 'filesystem'
 
-module Vivisector
+module PrismQA
 
   class Report
     attr_accessor :title
     attr_accessor :attribute
-    attr_accessor :anatomy
-    attr_accessor :appographies
+    attr_accessor :design_spectrum
+    attr_accessor :app_spectra
     attr_accessor :web_document_root
     attr_accessor :destination_path
     attr_accessor :img_width_px
@@ -33,14 +33,15 @@ module Vivisector
       element_path
     end
 
+    # render the report
     def to_s
-      # initial calculations
-      candidates = @appographies.select do |appog|
+      # initial calculations - get the app spectra that support the attribute we are reporting on
+      candidates = @app_spectra.select do |app_spectrum|
         next true if @attribute.nil? # unless there is nothing in this candidate???? might be expensive to check.
 
-        appog.image_set.target.attribute == @attribute
+        app_spectrum.image_set.target.attribute == @attribute
       end
-      design_images = @anatomy.image_set.images_for_attribute(@attribute)
+      design_images = @design_spectrum.image_set.images_for_attribute(@attribute)
       columns = candidates.length + 1
 
       me = self
@@ -50,7 +51,7 @@ module Vivisector
       mab.html do
 
         head do
-          title "#{me.title} | Vivisector"
+          title "#{me.title} | Prism QA"
           style :type => "text/css" do
             me.css
           end

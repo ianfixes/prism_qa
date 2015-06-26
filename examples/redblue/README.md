@@ -1,5 +1,5 @@
-Vivisector Example: Red and Blue
-================================
+Prism QA Example: Red and Blue
+==============================
 
 This example shows a design that is implemented on two separate targets (with attributes `tall` and `short`, respectively).  The design has one image -- red -- that is relevant to all targets, and a set of images that are target-specific representations of the same conceptual screen -- blue.
 

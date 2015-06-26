@@ -1,5 +1,5 @@
 
-module Vivisector
+module PrismQA
 
   class Target
     attr_accessor :name       # the friendly name of this target

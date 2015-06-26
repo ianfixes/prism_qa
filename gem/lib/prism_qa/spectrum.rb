@@ -1,11 +1,10 @@
 
-class ImageLoader
+class Spectrum
 
   attr_reader :image_set
 
   def initialize
-    @image_set = nil  # the image set for this loader
-
+    @image_set = nil  # the image set for this spectrum
   end
 
   def load
@@ -27,9 +26,9 @@ class ImageLoader
 end
 
 
-module Vivisector
+module PrismQA
 
-  class Anatomy < ImageLoader
+  class DesignSpectrum < Spectrum
 
     def initialize
       super
@@ -40,19 +39,19 @@ module Vivisector
       raise ImplementationError, "Got a nil DesignImageSet object; was #{self.class.name} properly extended?" if image_set.nil?
 
       # Ensure that we are only looking at design images
-      raise IncompatibilityError, "Tried to add a non- DesignImageSet object to Anatomy" unless image_set.is_a? DesignImageSet
+      raise IncompatibilityError, "Tried to add a non- DesignImageSet object to DesignSpectrum" unless image_set.is_a? DesignImageSet
     end
 
   end
 
 
-  class Appography < ImageLoader
+  class AppSpectrum < Spectrum
 
     def allow_image_set image_set
       raise ImplementationError, "Got a nil DesignImageSet object; was #{self.class.name} properly extended?" if image_set.nil?
 
       # Ensure that we are only looking at implementation images
-      raise IncompatibiltyError, "Tried to add a DesignImageSet object to Appography" if image_set.is_a? DesignImageSet
+      raise IncompatibiltyError, "Tried to add a DesignImageSet object to AppSpectrum" if image_set.is_a? DesignImageSet
     end
 
   end

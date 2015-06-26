@@ -1,8 +1,10 @@
-[![Gem Version](https://badge.fury.io/rb/vivisector.svg)](https://rubygems.org/gems/vivisector)
+[![Gem Version](https://badge.fury.io/rb/prism_qa.svg)](https://rubygems.org/gems/prism_qa)
 
-# Vivisector
+# Prism (QA)
 
-Vivisector helps you see inside your apps, specifically so that designers can be part of a QA / Continuous Integration process.  It's a framework to help you compare design "master" images to actual screenshots from various implementations.
+Prism helps you split your apps and your design document into visible components.  Its purpose is to enable designers to be an effective part of a QA / Continuous Integration process.
+
+Prism provides a framework for generating reports that compare design "master" images to actual screenshots from various implementations.
 
 
 ## Motivation
@@ -18,20 +20,20 @@ Vivisector helps you see inside your apps, specifically so that designers can be
 
 The most straightforward way is to install the gem.
 
-`$ gem install vivisector`
+`$ gem install prism_qa`
 
 Bundler is the preferred method.
 
-`gem 'vivisector', '~> 0.1', '>= 0.1.1'`
+`gem 'prism_qa', '~> 0.2', '>= 0.2.0'`
 
 
-## Vivisector Requirements
+## Prism Requirements
 
 You supply the input images.  You supply the output images.  You specify how they are related by defining a set of IDs and tagging the images with the appopriate ID.
 
-Vivisector really doesn't do much; it simply generates reports.
+Prism really doesn't do much; it simply generates reports.
 
 
 ## Setup
 
-See the [example implementations](examples/) for information on how to set up a basic Vivisector script.
+See the [example implementations](examples/) for information on how to set up a basic Prism QA script.

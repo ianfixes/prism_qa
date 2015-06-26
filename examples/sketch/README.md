@@ -1,5 +1,5 @@
-Vivisector Example: Sketch
-==========================
+Prism QA Example: Sketch
+========================
 
 This example shows a design that is implemented on two separate targets (with attributes `iPhone4` and `iPhone5`, respectively).  The design has one image -- red -- that is relevant to all targets, and a set of images that are target-specific representations of the same conceptual screen -- blue.
 
@@ -12,3 +12,9 @@ It generates reports in the `output/` directory:
 3. A report for the "iPhone5" attribute
 
 To generate these reports, run `ruby generate-report-from-sketchfile.rb iPhone_canvas.sketch`
+
+
+Requirements
+------------
+
+You will need to install [sketchtool](http://bohemiancoding.com/sketch/tool/) -- a free download.

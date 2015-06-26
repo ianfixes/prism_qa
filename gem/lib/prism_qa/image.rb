@@ -1,5 +1,5 @@
 
-module Vivisector
+module PrismQA
 
   # A simple container for image information
   class Image

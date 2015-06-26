@@ -14,7 +14,7 @@ def web_relative_path(web_root, base_document, child_element)
   c = File.expand_path(child_element)
   r = File.expand_path(web_root)
   unless ancestor?(r, c)
-    raise Vivisector::OperationalError, "Child element '#{c}' is not an ancestor of the web root '#{r}'"
+    raise PrismQA::OperationalError, "Child element '#{c}' is not an ancestor of the web root '#{r}'"
   end
   base = Pathname.new (File.dirname(File.expand_path(base_document)))
   elem = Pathname.new c

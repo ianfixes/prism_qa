@@ -1,7 +1,7 @@
 PATH
   remote: ../../
   specs:
-    vivisector (0.1.2)
+    prism_qa (0.2.0)
       markaby (~> 0.8, >= 0.8.0)
 
 GEM
@@ -15,4 +15,4 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  vivisector!
+  prism_qa!

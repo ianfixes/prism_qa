@@ -1,5 +1,5 @@
 
-module Vivisector
+module PrismQA
 
   # Container class for sets of images
   class ImageSet
