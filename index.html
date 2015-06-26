@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Prism QA : Compare Rainbows">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Prism QA</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/ifreecarve/prism_qa">View on GitHub</a>
+
+          <h1 id="project_title">Prism QA</h1>
+          <h2 id="project_tagline">Compare Rainbows</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/ifreecarve/prism_qa/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/ifreecarve/prism_qa/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><a href="https://rubygems.org/gems/prism_qa"><img src="https://badge.fury.io/rb/prism_qa.svg" alt="Gem Version"></a></p>
+
+<h1>
+<a id="prism-qa" class="anchor" href="#prism-qa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prism (QA)</h1>
+
+<p>Prism helps you split your apps and your design document into visible components.  Its purpose is to enable designers to be an effective part of a QA / Continuous Integration process.</p>
+
+<p>Prism provides a framework for generating reports that compare design "master" images to actual screenshots from various implementations.</p>
+
+<h2>
+<a id="motivation" class="anchor" href="#motivation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Motivation</h2>
+
+<ul>
+<li><p>Engineers can't be expected to maintain the quality of the UX design any more than the designers can be expected to maintain the quality of the app code.</p></li>
+<li><p>Making engineers the gatekeepers of app design (being that they are gatekeepers of the source code) is at best unfair and at worst unwise.  The skill sets are different, and complementary -- we need to use both, and a way for them to work toether.</p></li>
+<li><p>If designers are pointing out problems in the design of a released build (nightly or otherwise), they are too late -- perpetually.  They need to be involved during the pull request phase, doing the design equivalent of a code review.</p></li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>The most straightforward way is to install the gem.</p>
+
+<p><code>$ gem install prism_qa</code></p>
+
+<p>Bundler is the preferred method.</p>
+
+<p><code>gem 'prism_qa', '~&gt; 0.2', '&gt;= 0.2.0'</code></p>
+
+<h2>
+<a id="prism-requirements" class="anchor" href="#prism-requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prism Requirements</h2>
+
+<p>You supply the input images.  You supply the output images.  You specify how they are related by defining a set of IDs and tagging the images with the appopriate ID.</p>
+
+<p>Prism really doesn't do much; it simply generates reports.</p>
+
+<h2>
+<a id="setup" class="anchor" href="#setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup</h2>
+
+<p>See the <a href="examples/">example implementations</a> for information on how to set up a basic Prism QA script.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Prism QA maintained by <a href="https://github.com/ifreecarve">ifreecarve</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
