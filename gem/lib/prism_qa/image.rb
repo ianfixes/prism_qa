@@ -8,7 +8,6 @@ module PrismQA
     attr_accessor :description  # a friendly description
   end
 
-
   # Design images may optionally specify an attribute
   class DesignImage < Image
     attr_accessor :attribute

@@ -1,4 +1,6 @@
 
+# A Spectrum in Prism defines a set of images that can be loaded on demand
+# It is not exposed in the PrismQA module
 class Spectrum
 
   attr_reader :image_set
@@ -8,8 +10,8 @@ class Spectrum
   end
 
   def load
-    image_set = self.fetch_image_set
-    self.allow_image_set image_set
+    image_set = fetch_image_set
+    allow_image_set image_set
     @image_set = image_set
   end
 
@@ -19,39 +21,42 @@ class Spectrum
   end
 
   # implementation-specific: verify that an ImageSet is appropriate
-  def allow_image_set image_set
+  def allow_image_set(_image_set)
     puts "  +++ If you're seeing this, #{self.class.name}.#{__method__} was not overridden"
   end
 
 end
 
+# Extensions of Spectrum are exposed in the module
 
 module PrismQA
 
+  # A DesignSpectrum defines an order on a set of images used to represent the design
   class DesignSpectrum < Spectrum
 
     def initialize
       super
-      @order = []      # will hold the sorted indexes into the image set array
+      @order = []  # will hold the sorted indexes into the image set array
     end
 
-    def allow_image_set image_set
-      raise ImplementationError, "Got a nil DesignImageSet object; was #{self.class.name} properly extended?" if image_set.nil?
+    def allow_image_set(image_set)
+      fail ImplementationError, "Got a nil DesignImageSet object; was #{self.class.name} properly extended?" if image_set.nil?
 
       # Ensure that we are only looking at design images
-      raise IncompatibilityError, "Tried to add a non- DesignImageSet object to DesignSpectrum" unless image_set.is_a? DesignImageSet
+      unless image_set.is_a? DesignImageSet
+        fail IncompatibilityError, 'Tried to add a non- DesignImageSet object to DesignSpectrum'
+      end
     end
-
   end
 
-
+  # An AppSpectrum defines a set of images used to represent the actual app
   class AppSpectrum < Spectrum
 
-    def allow_image_set image_set
-      raise ImplementationError, "Got a nil DesignImageSet object; was #{self.class.name} properly extended?" if image_set.nil?
+    def allow_image_set(image_set)
+      fail ImplementationError, "Got a nil DesignImageSet object; was #{self.class.name} properly extended?" if image_set.nil?
 
       # Ensure that we are only looking at implementation images
-      raise IncompatibiltyError, "Tried to add a DesignImageSet object to AppSpectrum" if image_set.is_a? DesignImageSet
+      fail IncompatibiltyError, 'Tried to add a DesignImageSet object to AppSpectrum' if image_set.is_a? DesignImageSet
     end
 
   end

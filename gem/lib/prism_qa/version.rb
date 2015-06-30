@@ -1,3 +1,5 @@
+
+# The top-level prism module
 module PrismQA
-  VERSION = "0.2.0"
+  VERSION = '0.2.1'
 end

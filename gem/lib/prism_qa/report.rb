@@ -3,7 +3,9 @@ require_relative 'filesystem'
 
 module PrismQA
 
+  # A Prism report is an object whose to_s method returns HTML for the full report.
   class Report
+
     attr_accessor :title
     attr_accessor :attribute
     attr_accessor :design_spectrum
@@ -13,7 +15,7 @@ module PrismQA
     attr_accessor :img_width_px
 
     def css
-      width_string = ""
+      width_string = ''
       width_string = "width: #{@img_width_px}px;" unless img_width_px.nil?
       %(
         body {color:white; background-color:#333;}
@@ -26,7 +28,7 @@ module PrismQA
     end
 
     # if necessary, modify the path to be relative (for web-based reports)
-    def path_transform element_path
+    def path_transform(element_path)
       unless @web_document_root.nil?
         element_path = web_relative_path(@web_document_root, @destination_path, element_path)
       end
@@ -52,7 +54,7 @@ module PrismQA
 
         head do
           title "#{me.title} | Prism QA"
-          style :type => "text/css" do
+          style type: 'text/css' do
             me.css
           end
         end
@@ -60,12 +62,12 @@ module PrismQA
         body do
           h1 me.title
           if design_images.empty?
-            p "No input images were found."
+            p 'No input images were found.'
           else
             table.comparison do
               # print out the first row of the table -- the target names
               tr do
-                td "Design"
+                td 'Design'
                 candidates.each do |c|
                   td c.image_set.target.name
                 end
@@ -75,8 +77,8 @@ module PrismQA
               design_images.each do |design_image|
                 # title
                 tr do
-                  th :colspan => columns do
-                    a :name => design_image.description do
+                  th colspan: columns do
+                    a name: design_image.description do
                       design_image.description
                     end
                   end
@@ -84,10 +86,10 @@ module PrismQA
 
                 # images
                 tr do
-                  td :align => "right", :valign => "top" do
+                  td align: 'right', valign: 'top' do
                     src = me.path_transform(design_image.path)
-                    a :href => src do
-                      img.masterimg :src => src, :alt => design_image.description
+                    a href: src do
+                      img.masterimg src: src, alt: design_image.description
                     end
                   end
 
@@ -96,11 +98,11 @@ module PrismQA
                     if app_image.nil?
                       td { div.missing "#{design_image.description} on #{candidate.image_set.target.name}" }
                     else
-                      td :align => "left", :valign => "top" do
+                      td align: 'left', valign: 'top' do
                         div.holder do
                           src = me.path_transform(app_image.path)
-                          a :href => src do
-                            img.appimg :src => src, :alt => app_image.description
+                          a href: src do
+                            img.appimg src: src, alt: app_image.description
                           end
                         end
                       end
@@ -112,9 +114,9 @@ module PrismQA
           end
         end
       end
-      return mab.to_s
+      mab.to_s
     end
 
-  end #Report
+  end
 
 end

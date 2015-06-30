@@ -9,4 +9,4 @@ It generates reports in the `output/` directory:
 2. A report for the "tall" attribute
 3. A report for the "short" attribute
 
-To generate these reports, run `ruby generate-report.rb`
+To generate these reports, run `ruby generate_report.rb`
