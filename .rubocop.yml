@@ -1,0 +1,60 @@
+
+AllCops:
+  Exclude:
+    - gem/bin/*
+
+#### Actual TODO list
+
+# Will be fixed by refactor
+# Configuration parameters: CountKeywordArgs.
+Metrics/ParameterLists:
+  Max: 6
+
+# We use this in the examples to be quick and dirty
+Style/GlobalVars:
+  Enabled: false
+
+
+#### Don't use the computer to decide what's logical
+
+Metrics/AbcSize:
+  Enabled: false
+  Max: 68
+
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 64
+
+
+#### Don't use rubocop for things it doesn't fully understand
+
+# Not sure how else to call a method inside a module....
+Style/ColonMethodCall:
+  Enabled: false
+
+
+#### Don't let rubocop tell you your code is too easy to read
+
+
+# Configuration parameters: EnforcedStyle, SupportedStyles.
+Style/EmptyLinesAroundBlockBody:
+  Enabled: false
+
+# Configuration parameters: EnforcedStyle, SupportedStyles.
+Style/EmptyLinesAroundClassBody:
+  Enabled: false
+
+# Configuration parameters: EnforcedStyle, SupportedStyles.
+Style/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+# Configuration parameters: MinBodyLength.
+Style/GuardClause:
+  Enabled: false
+
+
+#### Don't let rubocop think its still the 80s
+
+# Configuration parameters: AllowURI, URISchemes.
+Metrics/LineLength:
+  Max: 130

@@ -12,8 +12,8 @@ module PrismQA
     end
 
     # Safe way to add images to the container
-    def add image
-      self.allow image
+    def add(image)
+      allow image
       # fix relative paths
       image.path = File.expand_path(image.path)
       @images << image
@@ -22,28 +22,28 @@ module PrismQA
     end
 
     # Raise an error if the image is not appropriate for this type of set
-    def allow image
+    def allow(_image)
       puts "  +++ If you're seeing this, #{self.class.name}.#{__method__} was not overridden"
     end
-  end
 
+  end
 
   # Design image sets need to be able to report on the images they contain
   class DesignImageSet < ImageSet
 
-    def allow image
+    def allow(image)
       # Ensure that image objects have an "attribute" field, among other things
-      raise IncompatibilityError, "Tried to add a non- DesignImage object to a DesignImageSet" unless image.is_a? DesignImage
+      fail IncompatibilityError, 'Tried to add a non- DesignImage object to a DesignImageSet' unless image.is_a? DesignImage
 
       # no duplicates allowed
-      if (@images.map { |i| [i.id, i.attribute] }).include? [image.id, image.attribute]
-        raise OperationalError, "Tried to add an image with duplicate ID '#{image.id}' and attribute '#{image.attribute}'"
+      if @images.map { |i| [i.id, i.attribute] }.include? [image.id, image.attribute]
+        fail OperationalError, "Tried to add an image with duplicate ID '#{image.id}' and attribute '#{image.attribute}'"
       end
     end
 
     # Get the list of unique attributes contained by the images within
     def contained_attributes
-      (@images.map { |i| i.attribute}).uniq
+      @images.map(&:attribute).uniq
     end
 
     # cache the image attributes
@@ -55,7 +55,7 @@ module PrismQA
       @attributes_by_id = {}
       @images.each do |img|
         proper_key = img.id.to_s
-        @attributes_by_id[proper_key] = [] unless @attributes_by_id.has_key? proper_key
+        @attributes_by_id[proper_key] = [] unless @attributes_by_id.key? proper_key
         @attributes_by_id[proper_key] << img.attribute
       end
 
@@ -63,8 +63,8 @@ module PrismQA
     end
 
     # get the list of images that are valid for a particular attribute
-    def images_for_attribute attribute
-      self.cache_image_attributes
+    def images_for_attribute(attribute)
+      cache_image_attributes
 
       # return the pared-down list
       @images.select do |img|
@@ -81,20 +81,19 @@ module PrismQA
 
   end
 
-
   # App image sets are tied to a target
   class AppImageSet < ImageSet
 
     attr_accessor :target
 
-    def allow image
+    def allow(image)
       # no duplicates
-      if (@images.map { |i| i.id}).include? image.id
-        raise OperationalError, "Tried to add an image with duplicate ID '#{image.id}'"
+      if @images.map(&:id).include? image.id
+        fail OperationalError, "Tried to add an image with duplicate ID '#{image.id}'"
       end
 
       # App image sets don't need to worry about specific fields, but we keep it clean and symmetric.
-      raise IncompatibilityError, "Tried to add a DesignImage object to a non- DesignImageSet" if image.is_a? DesignImage
+      fail IncompatibilityError, 'Tried to add a DesignImage object to a non- DesignImageSet' if image.is_a? DesignImage
     end
 
     def cache_image_lookups
@@ -109,11 +108,10 @@ module PrismQA
     end
 
     def best_image_for(id)
-      self.cache_image_lookups
+      cache_image_lookups
       @image_lookup.fetch(id.to_s, nil)
     end
 
   end
-
 
 end

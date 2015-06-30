@@ -1,7 +1,7 @@
 PATH
   remote: ../../
   specs:
-    prism_qa (0.2.0)
+    prism_qa (0.2.1)
       markaby (~> 0.8, >= 0.8.0)
 
 GEM

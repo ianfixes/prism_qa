@@ -11,7 +11,7 @@ It generates reports in the `output/` directory:
 2. A report for the "iPhone4" attribute
 3. A report for the "iPhone5" attribute
 
-To generate these reports, run `ruby generate-report-from-sketchfile.rb iPhone_canvas.sketch`
+To generate these reports, run `ruby generate_report_from_sketchfile.rb iPhone_canvas.sketch`
 
 
 Requirements
