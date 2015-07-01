@@ -25,7 +25,7 @@ The most straightforward way is to install the gem.
 
 Bundler is the preferred method.
 
-`gem 'prism_qa', '~> 0.2', '>= 0.2.0'`
+`gem 'prism_qa', '~> 0.2', '>= 0.2.1'`
 
 
 ## Prism Requirements
