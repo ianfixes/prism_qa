@@ -4,3 +4,5 @@ rvm:
 script:
    - rubocop -D
    - rspec --format doc
+   - cd examples/redblue
+   - ruby generate_report.rb
