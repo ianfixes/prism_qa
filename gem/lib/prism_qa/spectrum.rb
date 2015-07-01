@@ -56,7 +56,7 @@ module PrismQA
       fail ImplementationError, "Got a nil DesignImageSet object; was #{self.class.name} properly extended?" if image_set.nil?
 
       # Ensure that we are only looking at implementation images
-      fail IncompatibiltyError, 'Tried to add a DesignImageSet object to AppSpectrum' if image_set.is_a? DesignImageSet
+      fail IncompatibilityError, 'Tried to add a DesignImageSet object to AppSpectrum' if image_set.is_a? DesignImageSet
     end
 
   end

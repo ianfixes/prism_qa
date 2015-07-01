@@ -2,6 +2,8 @@
 AllCops:
   Exclude:
     - gem/bin/*
+    - bin/*
+    - spec/*
 
 #### Actual TODO list
 
@@ -24,6 +26,10 @@ Metrics/AbcSize:
 # Configuration parameters: CountComments.
 Metrics/MethodLength:
   Max: 64
+
+# Configuration parameters: CountComments.
+Metrics/ClassLength:
+  Enabled: false
 
 
 #### Don't use rubocop for things it doesn't fully understand

@@ -35,14 +35,34 @@ module PrismQA
       element_path
     end
 
-    # render the report
-    def to_s
-      # initial calculations - get the app spectra that support the attribute we are reporting on
-      candidates = @app_spectra.select do |app_spectrum|
+    def candidates_for_attribute
+      @app_spectra.select do |app_spectrum|
         next true if @attribute.nil? # unless there is nothing in this candidate???? might be expensive to check.
-
         app_spectrum.image_set.target.attribute == @attribute
       end
+    end
+
+    # make a list of problems found
+    def test_input
+      problems = []
+      @app_spectra.each do |app_spectrum|
+        problems << 'App spectrum has a nil target defined in its image set' if app_spectrum.image_set.target.nil?
+      end
+      problems
+    end
+
+    # raise an error if any problems are found
+    def validate_input
+      problems = test_input
+      fail OperationalError, "Found the following problems: #{problems}" unless problems.empty?
+    end
+
+    # render the report
+    def to_s
+      validate_input
+
+      # initial calculations - get the app spectra that support the attribute we are reporting on
+      candidates = candidates_for_attribute
       design_images = @design_spectrum.image_set.images_for_attribute(@attribute)
       columns = candidates.length + 1
 
