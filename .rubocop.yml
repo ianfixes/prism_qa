@@ -2,6 +2,8 @@
 AllCops:
   Exclude:
     - gem/bin/*
+    - bin/*
+    - spec/*
 
 #### Actual TODO list
 
