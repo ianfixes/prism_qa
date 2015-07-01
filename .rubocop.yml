@@ -25,6 +25,10 @@ Metrics/AbcSize:
 Metrics/MethodLength:
   Max: 64
 
+# Configuration parameters: CountComments.
+Metrics/ClassLength:
+  Enabled: false
+
 
 #### Don't use rubocop for things it doesn't fully understand
 
