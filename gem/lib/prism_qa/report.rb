@@ -54,7 +54,7 @@ module PrismQA
     # raise an error if any problems are found
     def validate_input
       problems = test_input
-      fail OperationalError, "Found the following problems: #{problems}" unless problems.empty?
+      raise OperationalError, "Found the following problems: #{problems}" unless problems.empty?
     end
 
     # render the report

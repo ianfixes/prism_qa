@@ -7,7 +7,7 @@ module PrismQA
   class IncompatibilityError < TypeError; end
 
   # For reporting improper extension of the PrismQA base classes (developer error)
-  class ImplementationError < NotImplementedError; end
+  class ImplementationError < RuntimeError; end
 
   # For reporting assertions that fail at runtime (logic errors in extender's code)
   class OperationalError < RuntimeError; end

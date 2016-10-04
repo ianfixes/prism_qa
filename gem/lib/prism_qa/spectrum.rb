@@ -40,11 +40,11 @@ module PrismQA
     end
 
     def allow_image_set(image_set)
-      fail ImplementationError, "Got a nil DesignImageSet object; was #{self.class.name} properly extended?" if image_set.nil?
+      raise ImplementationError, "Got a nil DesignImageSet object; was #{self.class.name} properly extended?" if image_set.nil?
 
       # Ensure that we are only looking at design images
       unless image_set.is_a? DesignImageSet
-        fail IncompatibilityError, 'Tried to add a non- DesignImageSet object to DesignSpectrum'
+        raise IncompatibilityError, 'Tried to add a non- DesignImageSet object to DesignSpectrum'
       end
     end
   end
@@ -53,10 +53,10 @@ module PrismQA
   class AppSpectrum < Spectrum
 
     def allow_image_set(image_set)
-      fail ImplementationError, "Got a nil DesignImageSet object; was #{self.class.name} properly extended?" if image_set.nil?
+      raise ImplementationError, "Got a nil DesignImageSet object; was #{self.class.name} properly extended?" if image_set.nil?
 
       # Ensure that we are only looking at implementation images
-      fail IncompatibilityError, 'Tried to add a DesignImageSet object to AppSpectrum' if image_set.is_a? DesignImageSet
+      raise IncompatibilityError, 'Tried to add a DesignImageSet object to AppSpectrum' if image_set.is_a? DesignImageSet
     end
 
   end

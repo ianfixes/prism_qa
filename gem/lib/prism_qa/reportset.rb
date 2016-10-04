@@ -15,7 +15,7 @@ module PrismQA
     def allow_path(path)
       unless @web_document_root.nil?
         unless ancestor?(@web_document_root, path)
-          fail OperationalError, "Report #{path} is not an ancestor of the web root #{@web_document_root}"
+          raise OperationalError, "Report #{path} is not an ancestor of the web root #{@web_document_root}"
         end
       end
     end

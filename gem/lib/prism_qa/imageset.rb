@@ -33,11 +33,11 @@ module PrismQA
 
     def allow(image)
       # Ensure that image objects have an "attribute" field, among other things
-      fail IncompatibilityError, 'Tried to add a non- DesignImage object to a DesignImageSet' unless image.is_a? DesignImage
+      raise IncompatibilityError, 'Tried to add a non- DesignImage object to a DesignImageSet' unless image.is_a? DesignImage
 
       # no duplicates allowed
       if @images.map { |i| [i.id, i.attribute] }.include? [image.id, image.attribute]
-        fail OperationalError, "Tried to add an image with duplicate ID '#{image.id}' and attribute '#{image.attribute}'"
+        raise OperationalError, "Tried to add an image with duplicate ID '#{image.id}' and attribute '#{image.attribute}'"
       end
     end
 
@@ -73,7 +73,7 @@ module PrismQA
 
         # if there is no attribute for this image, it should be pulled in
         #        ... unless there's an exact match elsewhere in the set.
-        next true if img.attribute.nil? unless @attributes_by_id[img.id.to_s].include? attribute
+        next true if img.attribute.nil? && !(@attributes_by_id[img.id.to_s].include? attribute)
 
         false
       end
@@ -89,11 +89,11 @@ module PrismQA
     def allow(image)
       # no duplicates
       if @images.map(&:id).include? image.id
-        fail OperationalError, "Tried to add an image with duplicate ID '#{image.id}'"
+        raise OperationalError, "Tried to add an image with duplicate ID '#{image.id}'"
       end
 
       # App image sets don't need to worry about specific fields, but we keep it clean and symmetric.
-      fail IncompatibilityError, 'Tried to add a DesignImage object to a non- DesignImageSet' if image.is_a? DesignImage
+      raise IncompatibilityError, 'Tried to add a DesignImage object to a non- DesignImageSet' if image.is_a? DesignImage
     end
 
     def cache_image_lookups

@@ -58,6 +58,15 @@ Style/EmptyLinesAroundModuleBody:
 Style/GuardClause:
   Enabled: false
 
+# Configuration parameters: AllowForAlignment.
+Style/SpaceAroundOperators:
+  Enabled: false
+
+# Configuration parameters: AllowForAlignment, ForceEqualSignAlignment.
+Style/ExtraSpacing:
+  Enabled: false
+
+
 
 #### Don't let rubocop think its still the 80s
 

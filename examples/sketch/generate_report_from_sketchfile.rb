@@ -2,7 +2,7 @@ require 'bundler/setup'
 require 'fileutils'
 require 'prism_qa'
 
-if ARGV.length == 0
+if ARGV.length.zero?
   puts 'Missing argument: path to sketch file'
   exit 1
 end
