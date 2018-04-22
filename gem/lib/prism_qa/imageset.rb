@@ -1,17 +1,20 @@
 
 module PrismQA
 
-  # Container class for sets of images
+  # A container for sets of images, with basic sanity checking
   class ImageSet
 
-    attr_reader :images  # the container for all the images in the set
+    # The container for all the images in the set
+    # @return [Array] of PrismQA::Image objects
+    attr_reader :images
 
     def initialize
       @images = []
       @cache_valid = false  # cache invalidation is so easy
     end
 
-    # Safe way to add images to the container
+    # Safely add images to the container
+    # @param [PrismQA::Image] The image to be added
     def add(image)
       allow image
       # fix relative paths
@@ -22,6 +25,8 @@ module PrismQA
     end
 
     # Raise an error if the image is not appropriate for this type of set
+    # @param [PrismQA::Image] The image to be added
+    # @throws
     def allow(_image)
       puts "  +++ If you're seeing this, #{self.class.name}.#{__method__} was not overridden"
     end

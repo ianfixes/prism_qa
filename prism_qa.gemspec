@@ -31,6 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'simplecov', '~> 0.10', '>= 0.10.0'
   spec.add_development_dependency 'simplecov-json', '~> 0.2', '>= 0.2.0'
+  spec.add_development_dependency 'yard', '~>0.8', '>= 0.8'
 
   spec.add_runtime_dependency 'markaby', '~> 0.8', '>= 0.8.0'
 end
