@@ -1,5 +1,5 @@
 [![Gem Version](https://badge.fury.io/rb/prism_qa.svg)](https://rubygems.org/gems/prism_qa)
-[![Build Status](https://travis-ci.org/ifreecarve/prism_qa.svg)](https://travis-ci.org/ifreecarve/prism_qa)
+[![Build Status](https://travis-ci.org/ianfixes/prism_qa.svg)](https://travis-ci.org/ianfixes/prism_qa)
 
 # Prism (QA)
 

@@ -10,10 +10,10 @@ Gem::Specification.new do |spec|
   spec.version       = PrismQA::VERSION
   spec.licenses      = ['Apache 2.0']
   spec.authors       = ['Ian Katz']
-  spec.email         = ['ifreecarve@gmail.com']
+  spec.email         = ['ianfixes@gmail.com']
 
   spec.summary       = 'Design QA tool'
-  spec.homepage      = 'http://github.com/ifreecarve/prism_qa'
+  spec.homepage      = 'http://github.com/ianfixes/prism_qa'
 
   spec.files         =  Dir['gem/**/*.*'].reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = 'exe'
