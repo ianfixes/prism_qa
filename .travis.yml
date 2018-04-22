@@ -2,7 +2,10 @@ language: ruby
 rvm:
   - 2.1.0
 script:
-   - rubocop -D
-   - rspec --format doc
+   - bundle install
+   - bundle exec rubocop -v
+   - bundle exec rubocop -D .
+   - bundle exec rspec --format doc
    - cd examples/redblue
-   - ruby generate_report.rb
+   - bundle install
+   - bundle exec ruby generate_report.rb
